@@ -7,18 +7,19 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/components/TestWidget.tsx',
-      name: 'TestWidget',
+      name: 'NotofoxWidget',
       fileName: (format) => `TestWidget.${format}.js`,
-      formats: ['umd']
+      formats: ['umd'],
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
       output: {
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
-    }
-  }
+          'react-dom': 'ReactDOM',
+        },
+        name: 'NotofoxWidget',
+      },
+    },
+  },
 });

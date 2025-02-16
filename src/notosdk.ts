@@ -19,17 +19,61 @@ import { NotofoxConfig } from "./lib/model";
 
         private initializeSDK(src: string): void {
             console.log("[+] Initializing Notofox SDK");
-            const script = document.createElement('script');
-            script.src = src;
-            script.async = true;
-            script.id = 'notofox-sdk';
             
-            script.onload = () => this.processQueue();
-            script.onerror = () => {
+            // Load React and ReactDOM first
+            const reactScript = document.createElement('script');
+            reactScript.src = 'https://unpkg.com/react@18/umd/react.production.min.js';
+            reactScript.type = 'text/javascript';
+            
+            const reactDomScript = document.createElement('script');
+            reactDomScript.src = 'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js';
+            reactDomScript.type = 'text/javascript';
+            
+            // Main widget script
+            const widgetScript = document.createElement('script');
+            widgetScript.src = src;
+            widgetScript.async = true;
+            widgetScript.type = 'text/javascript';
+            widgetScript.id = 'notofox-sdk';
+            
+            widgetScript.onload = () => {
+                console.log("[+] Widget script loaded from: " + src);
+                this.initWidget();
+            };
+            
+            widgetScript.onerror = () => {
                 console.error('Failed to load widget bundle from: ' + src);
             };
             
-            document.head.appendChild(script);
+            // Chain the loading sequence
+            reactScript.onload = () => {
+                console.log("[+] React loaded");
+                document.head.appendChild(reactDomScript);
+            };
+            
+            reactDomScript.onload = () => {
+                console.log("[+] ReactDOM loaded");
+                document.head.appendChild(widgetScript);
+            };
+            
+            // Start the loading sequence
+            document.head.appendChild(reactScript);
+        }
+
+        private initWidget(): void {
+
+            if (window.NotofoxWidget) {
+                window.NotofoxWidget.init({
+                    project: 'test-project',
+                    defaultTheme: 'light',
+                    locale: 'en',
+                    containerId: 'notofox-widget',
+                });
+            }
+
+            else {
+                console.log("window.NotofoxWidget is not defined");
+            }
         }
 
         private processQueue(): void {
@@ -46,9 +90,11 @@ import { NotofoxConfig } from "./lib/model";
             this.queue.push([action, config]);
             
             if (!document.getElementById('notofox-sdk')) {
+                console.log("Initializing TestWidget widget...");
                 const widgetBundleUrl = "../scripts/TestWidget.umd.js";
                 this.initializeSDK(widgetBundleUrl);
             } else if (window.NotofoxWidget) {
+                console.log("[+] Widget already initialized, processing queue...");
                 this.processQueue();
             }
         }

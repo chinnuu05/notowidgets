@@ -1,5 +1,6 @@
 module.exports = {
   plugins: {
+    
     "postcss-preset-mantine": {},
     "postcss-simple-vars": {
       variables: {
@@ -10,5 +11,17 @@ module.exports = {
         "mantine-breakpoint-xl": "88em",
       },
     },
+
+
+    // "postcss-mixins": {},
+    "postcss-nesting": {},
+    "tailwindcss/nesting": {},
+    tailwindcss: {},
+    autoprefixer: {},
+
+
+    // "@tailwindcss/postcss": {},
+    // "@tailwindcss/nesting": {},
+    
   },
 };

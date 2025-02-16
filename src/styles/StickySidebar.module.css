@@ -1,0 +1,27 @@
+.buttonWrapper {
+  transform: rotate(-90deg);
+  transform-origin: left;
+}
+
+.sidebarButton {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #3b82f6;
+}
+
+.sidebarButton:hover {
+  background-color: #2563eb;
+}
+
+.sidebarContainer {
+    width: 100%;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 0;
+    width: fit-content;
+    z-index: 100;
+}
+

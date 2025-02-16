@@ -1,0 +1,35 @@
+.actionIcon {
+    width: calc(var(--mantine-spacing-xl) * 1.5);
+    height: calc(var(--mantine-spacing-xl) * 1.5);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.actionIcon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.poweredByBadge {
+    font-size: 0.8rem;
+}
+
+.feedbackIcon {
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedbackText {
+    font-size: 1;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.feedbackIconContainer {
+    /* padding: 0.25rem 0.3rem; */
+    width: 32px;
+    height: 32px;
+}

@@ -7,3 +7,10 @@ export interface NotofoxConfig {
     containerId?: string;
 }
 
+
+export interface FloatingFeedbackWidgetProps {
+    iconColor: string;
+    bgColor: string;
+    icon: React.ReactNode;
+}
+
