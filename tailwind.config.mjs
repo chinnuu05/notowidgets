@@ -15,6 +15,9 @@ export default {
         sans: ['Poppins', 'sans-serif'], 
       },
       colors: {
+
+        
+
         'theme-color': '#ffb263',
         'mantine-border': '#e5e7eb',
         'hero-border': '#f2f2f25b',

@@ -2,15 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/notofox.svg" />
     <meta
       name="viewport"
       content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
     />
-    <title>Mantine Vite template</title>
+    <title>Notofox: Standalone Widgets</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- <script type="module" src="/src/main.tsx"></script> -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+
+    <div>
+      <h1>Standalone Widget Page</h1>
+    </div>
+
+
+    <!-- Notofox Embed Widget Code -->
+
+    <script src="scripts/notosdk.js"></script>
+    <script>
+        window.Notofox("initialize_widget", {
+          project: "test-project",
+          defaultTheme: "light",
+          locale: "en",
+          containerId: "notofox-widget",
+      });
+
+    </script>
+    
+
+
+
   </body>
 </html>

@@ -1,19 +1,24 @@
 import { MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
-import { FloatingFeedbackWidget } from "./components/widgets/FloatingFeedbackWidget";
+import { FloatingFeedbackWidget } from "./components/triggers/FloatingFeedbackWidget";
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import "./input.css";
 import "@mantine/core/styles.css";
 import { ThemeToggle } from "./components/ThemeToggle";
-import { StickySidebarWidget } from "./components/widgets/StickySidebarWidget";
-import { ChangelogPopupWidget } from "./components/widgets/ChangelogPopupWidget";
-import { GiveFeedbackButtonWidget } from "./components/widgets/GiveFeedbackButtonWidget";
+import { StickySidebarWidget } from "./components/triggers/StickySidebarWidget";
+import { ChangelogPopupWidget } from "./components/triggers/ChangelogPopupWidget";
+import { HelpCenterTrigger } from "./components/triggers/HelpCenterTrigger";
+import { GiveFeedbackButton } from "./components/triggers/GiveFeedbackHeartButton";
 
 export default function App() {
   // useEffect(() => {
+
+  //   console.log("Calling notosdk.js script, to initialize_widget");
   //   const script1 = document.createElement('script');
-  //   script1.src = '../scripts/notosdk.js';
+  //   // script1.src = '../scripts/notosdk.js';
+  //   script1.src = '../scripts/notofox.ts';
+
   //   script1.async = true;
   //   script1.type = "module";
     
@@ -47,10 +52,14 @@ export default function App() {
           <ThemeToggle/>
         </div>
 
-        <ChangelogPopupWidget></ChangelogPopupWidget>
-        <FloatingFeedbackWidget/>
 
-        <GiveFeedbackButtonWidget/>
+        {/* <iframe src="https://notion.pluggr.io/ebd/1773452ec7278044ae5fc99f97ac86ff" width="100%" height="600" /> */}
+
+
+        <HelpCenterTrigger/>
+
+        {/* <ChangelogPopupWidget></ChangelogPopupWidget> */}
+
         {/* <StickySidebarWidget></StickySidebarWidget> */}
 
       </div>

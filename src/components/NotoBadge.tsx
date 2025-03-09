@@ -7,7 +7,7 @@ export const NotoBadge = () => (
         <a
         target="_blank"
         href="#"
-        className={`${classes.poweredByBadge} transition-all duration-100 hover:-translate-y-0.5 border border-white hover:border-mantine-border dark:border-mantine-dark-800 dark:hover:border-mantine-dark-500 hover:shadow-xs rounded-lg px-2 py-1 flex space-x-1 items-center group`}
+        className={`${classes.poweredByBadge} transition-all duration-100 hover:-translate-y-0.5 border border-white hover:border-mantine-border dark:hover:border-mantine-dark-500 dark:border-mantine-dark-600 hover:shadow-xs rounded-lg px-2 py-1 flex space-x-1 items-center group`}
         >
             <div>Powered by</div>
             <div className="flex space-x-1 items-center">

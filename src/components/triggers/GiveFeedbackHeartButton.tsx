@@ -25,7 +25,20 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
         return sizes[size];
     };
 
+    // Icon size mapping
+    const getIconSize = (size: MantineSize) => {
+        const sizes = {
+            xs: 12,
+            sm: 14,
+            md: 17.5,
+            lg: 18,
+            xl: 20,
+        };
+        return sizes[size];
+    };
+
     const sizeStyles = getSizeStyles(size);
+    const iconSize = getIconSize(size);
 
     return (
         <div>
@@ -33,7 +46,7 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
                 shadow="sm"
                 radius="md"
                 position="right"
-                offset={{ mainAxis: -75, crossAxis: -150 }}
+                offset={{  crossAxis: 75, mainAxis: 10 }}
                 withinPortal={true}
                 closeOnClickOutside={true}
             >
@@ -41,7 +54,9 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
                     <a 
                         ref={feedbackButtonRef}
                         href="#" 
-                        className={`${classes.giveFeedbackButton} items-center px-4 py-2`}
+                        // Default is w-fit but user can choose to set a custom width or full width 
+
+                        className={`${classes.giveFeedbackButton} w-fit items-center px-4 py-2`}
                         style={{
                             ...sizeStyles,
                             display: 'flex',
@@ -51,7 +66,8 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
                     >
                         <FcLike 
                             className={`${classes.linkIcon} mr-1`} 
-                            size={size === 'xs' ? 12 : size === 'sm' ? 10 : size === 'lg' ? 14 : size === 'xl' ? 18 : 15} 
+                            size={iconSize}
+                            style={{ width: `${iconSize}px`, height: `${iconSize}px` }}
                         />
                         <span>Give feedback</span>
                     </a>

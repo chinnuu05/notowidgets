@@ -1,0 +1,60 @@
+.helpCenterWidget {
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.helpCenterGreetingUser {
+
+    line-height: var(--mantine-line-height-sm);
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+}
+
+.helpCenterGreetingMessage {
+    line-height: var(--mantine-line-height-sm);
+    font-size: 1.85rem;
+    color: white;
+    font-weight: 600;
+}
+
+.helpCenterCategories {
+    display: block;
+}
+
+.popoverDropdown {
+    border-top-left-radius: var(--mantine-radius-lg);
+    border-top-right-radius: var(--mantine-radius-lg);
+    width: 1000px;
+}
+
+.categoryCard {
+    border-radius: var(--mantine-radius-lg);
+    box-shadow: var(--mantine-shadow-sm);
+    padding: var(--mantine-spacing-md) var(--mantine-spacing-sm);
+}
+
+.categoryItem {
+    color: var(--mantine-color-gray-4);
+    font-size: var(--mantine-font-size-md);
+    border-radius: var(--mantine-radius-md);
+    font-weight: 500;
+
+    @mixin hover {
+        background-color: var(--mantine-color-gray-1);
+        color: var(--mantine-color-gray-3);
+    }
+
+    &[data-active] {
+        background-color: var(--mantine-color-gray-0);
+        border-color: var(--mantine-color-gray-0);
+        color: var(--mantine-color-gray-4);
+    
+
+    }
+
+
+
+    
+}
