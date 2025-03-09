@@ -15,7 +15,7 @@ export default defineConfig({
     },
     minify: false,
     rollupOptions: {
-      // external: ["react", "react-dom"], // by including this we tell Vite NOT to bundle react and react-dom in the output dist js file
+      // external: ["react", "react-dom"], // do NOT bundle react/react-dom
     },
   },
   define: {

@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Popover, MantineSize } from '@mantine/core';
+import { Popover, MantineSize, rem } from '@mantine/core';
 import { FcLike } from 'react-icons/fc';
-import classes from '@src/styles/GiveFeedbackButton.module.css';
-import { FeedbackWidget } from '@src/components/FeedbackWidget';
-
+import classes from '../../styles/GiveFeedbackButton.module.css';
+import { FeedbackWidget } from '../FeedbackWidget';
+import { WidgetWrapper } from '../WidgetWrapper';
+import { useHtmlColorScheme } from '../ThemeToggle';
 // Embeddable widget
 
 interface GiveFeedbackButtonProps {
@@ -12,6 +13,7 @@ interface GiveFeedbackButtonProps {
 
 export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => {
     const feedbackButtonRef = useRef<HTMLAnchorElement>(null);
+    const htmlColorScheme = useHtmlColorScheme();
 
     // Size-based styles
     const getSizeStyles = (size: MantineSize) => {
@@ -41,7 +43,7 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
     const iconSize = getIconSize(size);
 
     return (
-        <div>
+        <WidgetWrapper>
             <Popover
                 shadow="sm"
                 radius="md"
@@ -73,11 +75,22 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
                     </a>
                 </Popover.Target>
 
-                <Popover.Dropdown>
+                <Popover.Dropdown
+                        styles={{
+                            dropdown: {
+                                // width: "20rem",
+                                width: rem("21.5rem"),
+                                backgroundColor: htmlColorScheme == "dark" ? '#1f1f1f' : "#FFFFFF",
+                                // width: rem(20)
+                                // padding: 0,
+                            }
+                        }}
+                
+                >
                     {/* <DefaultFeedbackWidget></DefaultFeedbackWidget> */}
                     <FeedbackWidget/>   
                 </Popover.Dropdown>
             </Popover>
-        </div>
+        </WidgetWrapper>
     );
 };

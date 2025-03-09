@@ -8,14 +8,14 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "src/components/triggers/TestWidget.tsx", // Ensure this path is correct
+      entry: "src/components/triggers/FeedbackWidgetTrigger.tsx", // Ensure this path is correct
       name: "NotofoxWidget",
-      fileName: (format) => `TestWidget.${format}.js`,
+      fileName: (format) => `FeedbackWidget.${format}.js`,
       formats: ["umd"], // Ensure UMD format is used
     },
     minify: false,
     rollupOptions: {
-      // external: ["react", "react-dom"], // by including this we tell Vite NOT to bundle react and react-dom in the output dist js file
+      // external: ["react", "react-dom"], // do NOT bundle react/react-dom
     },
   },
   define: {

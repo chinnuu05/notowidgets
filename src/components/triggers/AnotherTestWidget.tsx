@@ -1,10 +1,9 @@
 
-
-export const AnotherTestWidget = () => {
+export default function AnotherTestWidget() {
     return (
-        <div className="text-2xl text-red-500 p-3 bg-gray-200">
-
-            This is the Another Test Widget
+        <div style={{ color: "red", fontSize: 32, padding: "5px"}} className="text-3xl font-semibold text-red-500">
+            <div>Another Test Widget</div>
         </div>
-    )
+
+    );
 }

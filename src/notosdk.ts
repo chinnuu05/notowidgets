@@ -1,13 +1,20 @@
 import { NotofoxConfig } from "./lib/model";
+// import React from "react";
+// import ReactDOM from "react-dom";
 
 (function (window: any, document: any) {
   class Notofox {
-    // Points to your self-contained UMD that has React built in
-    private widgetSrc: string =
-      "https://raw.githack.com/chinnuu05/notowidgets/master/TestWidgetV10.js";
+    
+
+    // This will be set dynamically based on which widget is being loaded
+    private widgetSrc: string = "../scripts/FeedbackWidget.umd.js";
 
     constructor() {
       console.log("[+] Notofox SDK initialized.");
+      console.log("[+] Widget source:", this.widgetSrc);
+      // console.log('Inside NotoSDK, window.React version:', React.version);
+      // console.log('Inside NotoSDK, window.ReactDOM version:', ReactDOM.version);
+
     }
 
     public initialize(config: NotofoxConfig): void {

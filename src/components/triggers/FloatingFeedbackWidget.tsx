@@ -27,9 +27,10 @@ interface FeedbackWidgetProps {
 import { Button, Stepper, rem, ScrollArea, Textarea, TextInput, Select, Group, ActionIcon, Switch, Popover } from "@mantine/core";
 import { useDisclosure } from '@mantine/hooks';
 import { useWindowSize } from 'react-use';
-import classes from "@src/styles/FloatingFeedbackWidget.module.css";
-import { NotoBadge } from '@src/components/NotoBadge';
-import { FeedbackWidget } from "@src/components/FeedbackWidget";
+// import classes from "@src/styles/FloatingFeedbackWidget.module.css";
+// import { NotoBadge } from '@src/components/NotoBadge';
+import { FeedbackWidget } from "../FeedbackWidget";
+import { WidgetWrapper } from '../WidgetWrapper';
 
 /* Takes in icon color, bg color, and icon svg */
 export const FloatingFeedbackWidget = () => {
@@ -106,55 +107,61 @@ export const FloatingFeedbackWidget = () => {
 
 
     return (
-        <div className="fixed bottom-6 right-6 z-50">
-            <Popover 
-                closeOnClickOutside={false}
-                    
-                offset={{
-                    crossAxis: -30,
-                    mainAxis: 15,
-                }}
-                shadow="sm"
-                radius="lg"
-                position="top-end"
+        
+        <WidgetWrapper>
+            <div id="floating-widget" className="fixed bottom-6 right-6 z-50">
+                <Popover 
+                    closeOnClickOutside={false}
 
-            >
-
-                <Popover.Target>
-
-                    
-                    <ActionIcon 
-                        // className={`${classes.actionIcon} rounded-full p-8`}
-                        size={53}
-                        radius="xl"
-                        color="#ffb263"
-                        // className="transition-all duration-100 shadow-lg hover:shadow-xl"
-                    >
-                        <IconBulbFilled size={30} className="text-white" />
-                    </ActionIcon>
-
-
-                </Popover.Target>
-
-                <Popover.Dropdown
-                    styles={{
-                        dropdown: {
-                            // width: "20rem",
-                            width: rem("18rem"),
-                            backgroundColor: htmlColorScheme == "dark" ? '#1f1f1f' : "#FFFFFF",
-                            // width: rem(20)
-                            // padding: 0,
-                        }
+                    offset={{
+                        crossAxis: -30,
+                        mainAxis: 15,
                     }}
+                    shadow="sm"
+                    radius="lg"
+                    position="top-end"
+
                 >
-                    <FeedbackWidget />
-                </Popover.Dropdown>
+
+                    <Popover.Target>
+
+                        
+                        <ActionIcon 
+                            // className={`${classes.actionIcon} rounded-full p-8`}
+                            size={53}
+                            radius="xl"
+                            color="#ffb263"
+                            // className="transition-all duration-100 shadow-lg hover:shadow-xl"
+                        >
+                            <IconBulbFilled size={30} className="text-white" />
+                        </ActionIcon>
+
+
+                    </Popover.Target>
+
+                    <Popover.Dropdown
+                        styles={{
+                            dropdown: {
+                                // width: "20rem",
+                                width: rem("23rem"),
+                                backgroundColor: htmlColorScheme == "dark" ? '#1f1f1f' : "#FFFFFF",
+                                // width: rem(20)
+                                // padding: 0,
+                            }
+                        }}
+                    >
+                        <FeedbackWidget />
+                    </Popover.Dropdown>
 
 
 
-            </Popover>
+                </Popover>
 
-        </div>
+            </div>
+
+
+        </WidgetWrapper>
+
     );
 
 }

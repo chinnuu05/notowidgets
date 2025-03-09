@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build:widget": "vite build --config vite.config.testwidget.js",
+    "build:feedback": "vite build --config vite.config.feedback.js",
+
     "build:bootstrap": "vite build --config vite.config.bootstrap.js",
+
     "preview": "vite preview"
   },
   "dependencies": {

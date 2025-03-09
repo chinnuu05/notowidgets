@@ -1,2 +1,61 @@
-var s=Object.defineProperty;var c=(t,o,n)=>o in t?s(t,o,{enumerable:!0,configurable:!0,writable:!0,value:n}):t[o]=n;var d=(t,o,n)=>c(t,typeof o!="symbol"?o+"":o,n);(function(){"use strict";(function(t,o){class n{constructor(){d(this,"widgetSrc","https://raw.githack.com/chinnuu05/notowidgets/master/TestWidgetV10.js");console.log("[+] Notofox SDK initialized.")}initialize(i){console.log("[+] Initializing widget with config:",i),this.loadWidgetScript(i)}loadWidgetScript(i){console.log(`[+] Loading widget script: ${this.widgetSrc}`),this.loadScript(this.widgetSrc,()=>{console.log("[+] Widget script loaded."),this.waitForWidget(()=>{console.log("[+] NotofoxWidget available, calling init()"),t.NotofoxWidget.init(i)})})}loadScript(i,l){if(o.querySelector(`script[src="${i}"]`)){console.log(`[!] Script ${i} already loaded.`),l();return}const e=o.createElement("script");e.src=i,e.async=!0,e.type="text/javascript",e.onload=l,e.onerror=()=>console.error(`[X] Failed to load script: ${i}`),o.head.appendChild(e)}waitForWidget(i,l=50,e=100){t.NotofoxWidget?i():l>0?(console.log(`[!] Waiting for NotofoxWidget... Retries left: ${l}`),setTimeout(()=>this.waitForWidget(i,l-1,e),e)):console.error("[X] NotofoxWidget did not load in time.")}}t.Notofox=function(r,i){r==="initialize_widget"?new n().initialize(i):console.error(`[X] Unknown action: ${r}`)}})(window,document)})();
-//# sourceMappingURL=notosdk.js.map
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+(function() {
+  "use strict";
+  (function(window2, document2) {
+    class Notofox {
+      constructor() {
+        // This will be set dynamically based on which widget is being loaded
+        __publicField(this, "widgetSrc", "../scripts/FeedbackWidget.umd.js");
+        console.log("[+] Notofox SDK initialized.");
+        console.log("[+] Widget source:", this.widgetSrc);
+      }
+      initialize(config) {
+        console.log("[+] Initializing widget with config:", config);
+        this.loadWidgetScript(config);
+      }
+      loadWidgetScript(config) {
+        console.log(`[+] Loading widget script: ${this.widgetSrc}`);
+        this.loadScript(this.widgetSrc, () => {
+          console.log("[+] Widget script loaded.");
+          this.waitForWidget(() => {
+            console.log("[+] NotofoxWidget available, calling init()");
+            window2.NotofoxWidget.init(config);
+          });
+        });
+      }
+      loadScript(src, callback) {
+        if (document2.querySelector(`script[src="${src}"]`)) {
+          console.log(`[!] Script ${src} already loaded.`);
+          callback();
+          return;
+        }
+        const script = document2.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.type = "text/javascript";
+        script.onload = callback;
+        script.onerror = () => console.error(`[X] Failed to load script: ${src}`);
+        document2.head.appendChild(script);
+      }
+      waitForWidget(callback, retries = 50, interval = 100) {
+        if (window2.NotofoxWidget) {
+          callback();
+        } else if (retries > 0) {
+          console.log(`[!] Waiting for NotofoxWidget... Retries left: ${retries}`);
+          setTimeout(() => this.waitForWidget(callback, retries - 1, interval), interval);
+        } else {
+          console.error("[X] NotofoxWidget did not load in time.");
+        }
+      }
+    }
+    window2.Notofox = function(action, config) {
+      if (action === "initialize_widget") {
+        new Notofox().initialize(config);
+      } else {
+        console.error(`[X] Unknown action: ${action}`);
+      }
+    };
+  })(window, document);
+})();

@@ -22,22 +22,22 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        'TestWidget': 'src/components/TestWidget.tsx',
+        'TestWidget': 'src/components/triggers/TestWidget.tsx',
         'notosdk': 'src/notosdk.ts'
       },
       formats: ['es', 'umd'],
       name: 'MyWidget',
       fileName: (format, entryName) => `${entryName}.${format}.js`
     },
-    rollupOptions: {
-      external: ['react', 'react-dom'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
-    }
+    // rollupOptions: {
+    //   external: ['react', 'react-dom'],
+    //   output: {
+    //     globals: {
+    //       react: 'React',
+    //       'react-dom': 'ReactDOM'
+    //     }
+    //   }
+    // }
   },
   resolve: {
     alias: {

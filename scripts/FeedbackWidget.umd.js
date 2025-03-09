@@ -20689,7 +20689,7 @@
   if (typeof window !== "undefined" && typeof window.process === "undefined") {
     window.process = { env: { NODE_ENV: "production" } };
   }
-  function TestWidget() {
+  function FeedbackWidgetTrigger() {
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-2xl font-semibold p-12 z-50", style: { border: "1px solid #ccc", padding: "1rem" }, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Hello World Test Widget" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Project: Notofox" }),
@@ -20700,7 +20700,7 @@
   let widgetRoot = null;
   const NotofoxWidget = {
     init(config) {
-      console.log("[+] TestWidget init function called, adding/updating widget");
+      console.log("[+] FeedbackWidgetTrigger init function called, adding/updating widget for: ", JSON.stringify(config));
       const containerId = config.containerId || "notofox-widget";
       let container = document.getElementById(containerId);
       if (!container) {
@@ -20731,7 +20731,7 @@
   if (typeof window !== "undefined") {
     window.NotofoxWidget = NotofoxWidget;
   }
+  exports2.FeedbackWidgetTrigger = FeedbackWidgetTrigger;
   exports2.NotofoxWidget = NotofoxWidget;
-  exports2.TestWidget = TestWidget;
   Object.defineProperty(exports2, Symbol.toStringTag, { value: "Module" });
 });

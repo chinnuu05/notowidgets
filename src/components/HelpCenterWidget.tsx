@@ -130,15 +130,22 @@ export const HelpCenterWidget = () => {
                 <Tabs.List 
                     grow={true}
                     className="flex justify-between w-full items-center pt-2 pb-0.5 border-t border-mantine-border dark:border-mantine-dark-500  dark:bg-mantine-dark-700 bg-white mt-auto">
+                    
+                    {
+                        tabs.map((tab) => {
+                            return (
+                                <Tabs.Tab 
+                                value={tab.label.toLowerCase()}
+                                className="flex-1 flex flex-col items-center justify-center"
+                                leftSection={<tab.icon size={20} className="mx-auto text-mantine-gray-700"></tab.icon>}
+                            >
+                                <div className="pt-1.5 text-xs text-center w-full">{tab.label}</div>
+                            </Tabs.Tab>
+                            )
+                        })
+                    }
 
-                    <Tabs.Tab 
-                        value="home" 
-                        className="flex-1 flex flex-col items-center justify-center"
-                        leftSection={<IconInbox size={20} className="mx-auto" />}
-                    >
-                        <div className="pt-1.5 text-xs text-center w-full">Home</div>
-                    </Tabs.Tab>
-                    <Tabs.Tab 
+                    {/* <Tabs.Tab 
                         value="feedback" 
                         className="flex-1 flex flex-col items-center justify-center"
                         leftSection={<IconInbox size={20} className="mx-auto" />}
@@ -162,7 +169,7 @@ export const HelpCenterWidget = () => {
                         leftSection={<IconInbox size={20} className="mx-auto" />}
                     >
                         <div className="pt-1.5 text-xs text-center w-full">Help</div>
-                    </Tabs.Tab>
+                    </Tabs.Tab> */}
 
                 </Tabs.List>
 

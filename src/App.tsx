@@ -43,27 +43,41 @@ export default function App() {
 
   // The MantineProvider must be initialiazed with the chosen color scheme
 
-  return (
-    <MantineProvider theme={theme}>
-      <div>
+  const AppLayout = ( { children} : { children: React.ReactNode }) => {
+    return (
+      <MantineProvider theme={theme}>
+        <div>
+          {children}
+        </div>
+      </MantineProvider>
 
-        <div className="text-black mx-auto w-full flex items-center text-center justify-items-center">
-          <div>Test Theme</div>
-          <ThemeToggle/>
+    )
+  }
+
+
+  return (
+
+    <AppLayout>
+        <div className="bg-white h-screen">
+
+          <div className="mx-auto w-full flex items-center text-center justify-items-center">
+            <div className="text-3xl text-black">App.tsx Home Page</div>
+          </div>
+
+          {/* <iframe src="https://notion.pluggr.io/ebd/1773452ec7278044ae5fc99f97ac86ff" width="100%" height="600" /> */}
+
+
+          <HelpCenterTrigger/>
+
+          {/* <ChangelogPopupWidget></ChangelogPopupWidget> */}
+
+          {/* <StickySidebarWidget></StickySidebarWidget> */}
+
         </div>
 
+      
+    </AppLayout>
 
-        {/* <iframe src="https://notion.pluggr.io/ebd/1773452ec7278044ae5fc99f97ac86ff" width="100%" height="600" /> */}
-
-
-        <HelpCenterTrigger/>
-
-        {/* <ChangelogPopupWidget></ChangelogPopupWidget> */}
-
-        {/* <StickySidebarWidget></StickySidebarWidget> */}
-
-      </div>
-    </MantineProvider>
   );
 }
 

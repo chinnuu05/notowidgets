@@ -14,7 +14,7 @@ if (typeof window !== "undefined" && typeof (window as any).process === "undefin
 }
 // ---------------------------------------------------------------------
 
-export function TestWidget() {
+export function FeedbackWidgetTrigger() {
   return (
     <div className="text-2xl font-semibold p-12 z-50" style={{ border: '1px solid #ccc', padding: '1rem' }}>
       <h2>Hello World Test Widget</h2>
@@ -35,7 +35,7 @@ export const NotofoxWidget = {
   init(config: NotofoxConfig) {
 
 
-    console.log("[+] TestWidget init function called, adding/updating widget");
+    console.log("[+] FeedbackWidgetTrigger init function called, adding/updating widget for: ", JSON.stringify(config));
 
     // Double-check window.React is available (just in case)
     // if (typeof React === "undefined" || typeof ReactDOM === "undefined") {
@@ -83,6 +83,13 @@ export const NotofoxWidget = {
       // widgetRoot.render(
       //   <AnotherTestWidget></AnotherTestWidget>
       // );
+
+
+        // Now show different trigger ui based on the config 
+
+
+
+
       widgetRoot.render(
         // <GiveFeedbackButton size="md"/>
         <FloatingFeedbackWidget></FloatingFeedbackWidget>

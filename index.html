@@ -10,15 +10,14 @@
     <title>Notofox: Standalone Widgets</title>
   </head>
   <body>
-    <div id="root"></div>
-    <!-- <script type="module" src="/src/main.tsx"></script> -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Compiled Tailwind and PostCSS in one file for the widget -->
+    <link rel="stylesheet" href="../../scripts/vite-min-template.css"/>
 
+    <script type="module" src="src/main.tsx"></script>
 
-    <div>
-      <h1>Standalone Widget Page</h1>
-    </div>
+    <!-- Main div which notofox-widget container is added too, and then subsequently our widget -->
+    <div id="root" className=""></div>
+
 
 
     <!-- Notofox Embed Widget Code -->
@@ -26,9 +25,13 @@
     <script src="scripts/notosdk.js"></script>
     <script>
         window.Notofox("initialize_widget", {
-          project: "test-project",
+          project: "Notofox",
           defaultTheme: "light",
           locale: "en",
+          widgetType: "feedback",
+          triggerConfig: {
+            type: "floating"
+          },
           containerId: "notofox-widget",
       });
 

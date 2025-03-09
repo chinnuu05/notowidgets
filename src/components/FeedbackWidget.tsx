@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import Confetti from 'react-confetti'
 // import { useWindowSize } from 'react-use'
 import { useViewportSize } from '@mantine/hooks';
-import { useHtmlColorScheme } from '@src/components/ThemeToggle';
+import { useHtmlColorScheme } from './ThemeToggle';
 import { 
     IconBulbFilled,
     IconTargetArrow,
@@ -22,8 +22,8 @@ import {
 import { Button, Stepper, rem, ScrollArea, Textarea, TextInput, Select, Group, ActionIcon, Switch, Popover } from "@mantine/core";
 import { useDisclosure } from '@mantine/hooks';
 import { useWindowSize } from 'react-use';
-import classes from "@src/styles/FloatingFeedbackWidget.module.css";
-import { NotoBadge } from '@src/components/NotoBadge';
+import classes from "../styles/FloatingFeedbackWidget.module.css";
+import { NotoBadge } from './NotoBadge';
 
 
 
