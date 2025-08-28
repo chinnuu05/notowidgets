@@ -1,5 +1,6 @@
-# Mantine Vite template
+# Notofox Emeddable Widgets project
 
-Get started with the template by clicking `Use this template` button on the top of the page.
+### This project has a bootloader script and build scripts for each of the widgets for Notofox
 
-[Documentation](https://mantine.dev/guides/vite/)
+### Build the feedback widget with: 
+npm run build:feedback
