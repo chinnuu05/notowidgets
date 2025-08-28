@@ -2,7 +2,7 @@
 
 ## This project has a bootloader script and build scripts for each Notofox widget
 
-### Build the feedback widget with: 
+### Build the feedback widget
 ```npm run build:feedback```
 
 ### Build the bootstrap loader
@@ -26,3 +26,5 @@
 </script>
 ```
 
+### Test the widgets with
+```npm run dev```
