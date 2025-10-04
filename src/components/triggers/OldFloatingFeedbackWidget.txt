@@ -1,0 +1,131 @@
+        
+    const { width, height } = useWindowSize()
+    const [ opened, { toggle }] = useDisclosure(false);
+    const [feedbackType, setFeedbackType] = useState<string>("");
+    const [feedbackText, setFeedbackText] = useState<string>("");
+    const [submitButtonLoading, { toggle: toggleSubmitButton }] = useDisclosure(false);
+
+
+    const htmlColorScheme = useHtmlColorScheme();
+
+    const [active, setActive] = useState(0);
+    const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
+    const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+
+
+    const handleFeedbackTypeClick = (type: string) => {
+        setFeedbackType(type);
+        nextStep();
+
+    };
+
+    // TODO: Makes AJAX call to backend with project id and feedback data
+    const submitFeedback = () => {
+
+        console.log("Submitting feedback widget feedback: ", feedbackText);
+
+        // console.log(`Submitting feedback for projeect ${props.projectID}, with feedback type: ${feedbackType}`);
+        // const payload = {
+        //     project_id: props.projectID,
+        //     feedback_type: feedbackType,
+        // }
+    }
+
+    const [showConfetti, setShowConfetti] = useState(true);
+
+    const getPlaceholder = (type: string) => {
+        switch (type.toLowerCase()) {
+            case "bug":
+                return "What's the bug and how can we reproduce it?"
+            case "feature":
+                return "What's your feature? How would it help Footprint's users?"
+            case "other":
+                return "What's on your mind? We're open to new ideas and suggestions."
+        }
+    }
+
+    const getTitle = (type: string) => {
+
+        switch (type.toLowerCase()) {
+            case "bug":
+                return {
+                    title: "Bug Report",
+                    icon: IconBug, 
+                }
+            case "feature":
+                return {
+                    title: "Feature Request",
+                    icon: IconTargetArrow,
+                }
+            case "other":
+                return {
+                    title: "Feedback",
+                    icon: IconHelpHexagonFilled,
+                }
+        }
+
+    }
+
+
+    const [ popoverOpened, setPopoverOpened ] = useState(false);
+
+
+
+        
+        
+        <WidgetWrapper>
+            <div id="floating-widget" className="fixed bottom-[1.75rem] right-[2rem] z-50">
+                <Popover 
+                    closeOnClickOutside={false}
+                    opened={popoverOpened}
+                    offset={{
+                        crossAxis: -30,
+                        mainAxis: 15,
+                    }}
+                    shadow="sm"
+                    radius="lg"
+                    position="top-end"
+
+                >
+
+                    <Popover.Target>
+
+                        
+                        <ActionIcon 
+                            // className={`${classes.actionIcon} rounded-full p-8`}
+                            size={53}
+                            radius="xl"
+                            color="#ffb263"
+                            onClick={() => {
+                                setPopoverOpened(!popoverOpened);
+                            }}
+                            // className="transition-all duration-100 shadow-lg hover:shadow-xl"
+                        >
+                            <IconBulbFilled size={30} className="text-white" />
+                        </ActionIcon>
+
+
+                    </Popover.Target>
+
+                    <Popover.Dropdown
+                        styles={{
+                            dropdown: {
+                                // width: "20rem",
+                                width: rem("23rem"),
+                                backgroundColor: htmlColorScheme == "dark" ? '#1f1f1f' : "#FFFFFF",
+                                // width: rem(20)
+                                // padding: 0,
+                            }
+                        }}
+                    >
+                        <FeedbackWidget setPopoverOpened={setPopoverOpened} />
+                    </Popover.Dropdown>
+
+
+
+                </Popover>
+
+            </div>
+
+
+        </WidgetWrapper>

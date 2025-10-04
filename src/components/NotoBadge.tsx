@@ -7,12 +7,12 @@ export const NotoBadge = () => (
         <a
         target="_blank"
         href="#"
-        className={`${classes.poweredByBadge} transition-all duration-100 hover:-translate-y-0.5 border border-white hover:border-mantine-border dark:hover:border-mantine-dark-500 dark:border-mantine-dark-600 hover:shadow-xs rounded-lg px-2 py-1 flex space-x-1 items-center group`}
+        className={`${classes.poweredByBadge} transition-all duration-100 hover:-translate-y-0.5 border border-white hover:border-mantine-border dark:hover:border-mantine-dark-500 dark:border-mantine-dark-600 hover:shadow-xs rounded-lg px-3 py-1.5 flex space-x-1 items-center group`}
         >
-            <div>Powered by</div>
+            <div className="text-sm">Powered by</div>
             <div className="flex space-x-1 items-center">
-                <img className="object-fit" style={{ width: rem(15), height: rem(15)}} src={`images/notofox.svg`}></img>
-                <div className="ml-0.5 text-orange-500 font-semibold duration-100 transition-all">notofox</div>
+                <img className="object-fit" style={{ width: rem(13), height: rem(13)}} src={`/static/images/notofox.svg`}></img>
+                <div className="text-sm ml-0.5 text-orange-500 font-semibold duration-100 transition-all">notofox</div>
             </div>
         </a>
     {/* <div>{`, a new app I just launched <3`}</div> */}

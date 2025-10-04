@@ -14,6 +14,7 @@ interface GiveFeedbackButtonProps {
 export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => {
     const feedbackButtonRef = useRef<HTMLAnchorElement>(null);
     const htmlColorScheme = useHtmlColorScheme();
+    const [ widgetOpened, setWidgetOpened ] = useState(false);
 
     // Size-based styles
     const getSizeStyles = (size: MantineSize) => {
@@ -43,6 +44,29 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
     const iconSize = getIconSize(size);
 
     return (
+
+        <a 
+            ref={feedbackButtonRef}
+            href="#" 
+            // Default is w-fit but user can choose to set a custom width or full width 
+
+            className={`${classes.giveFeedbackButton} w-fit items-center px-4 py-2`}
+            style={{
+                ...sizeStyles,
+                display: 'flex',
+                alignItems: 'center',
+                gap: size === 'xs' ? '4px' : size === 'sm' ? '6px' : size === 'lg' ? '10px' : size === 'xl' ? '12px' : '8px',
+            }}
+        >
+            <FcLike 
+                className={`${classes.linkIcon} mr-1`} 
+                size={iconSize}
+                style={{ width: `${iconSize}px`, height: `${iconSize}px` }}
+            />
+            <span>Give feedback</span>
+        </a>
+
+        /*
         <WidgetWrapper>
             <Popover
                 shadow="sm"
@@ -87,10 +111,10 @@ export const GiveFeedbackButton = ({ size = 'sm' }: GiveFeedbackButtonProps) => 
                         }}
                 
                 >
-                    {/* <DefaultFeedbackWidget></DefaultFeedbackWidget> */}
-                    <FeedbackWidget/>   
+                    <FeedbackWidget setPopoverOpened={setWidgetOpened}/> 
                 </Popover.Dropdown>
             </Popover>
         </WidgetWrapper>
+        */
     );
 };

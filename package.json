@@ -7,12 +7,12 @@
     "dev": "vite",
     "build:widget": "vite build --config vite.config.testwidget.js",
     "build:feedback": "vite build --config vite.config.feedback.js",
-
     "build:bootstrap": "vite build --config vite.config.bootstrap.js",
-
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
     "@mantine/core": "^7.16.3",
     "@mantine/dates": "^7.16.3",
     "@mantine/form": "^7.16.3",
@@ -47,7 +47,8 @@
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
     "typescript": "^5.7.3",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
   },
   "packageManager": "yarn@4.6.0"
 }

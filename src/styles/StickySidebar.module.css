@@ -1,18 +1,93 @@
 .buttonWrapper {
-  transform: rotate(-90deg);
-  transform-origin: left;
+  transform: translateX(6px) rotate(-90deg) translate(50%, -50%);
+  transform-origin: 100% 50%;
+  transition: transform 0.25s ease;
+}
+
+.buttonWrapper:hover {
+  transform: translateX(3px) rotate(-90deg) translate(50%, -50%);
 }
 
 .sidebarButton {
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
-  padding: 0.5rem 1.5rem;
-  background-color: #3b82f6;
+  position: relative;
+  display: inline-flex; 
+  right: -4px;
+  top: 40%;
+  z-index: 1000;
+  color: white;
+  background-color: oklch(70.5% .213 47.604);
+  padding: 0 16px 0 13px;
+  /* line-height: 1.5px; */
+  height: 43px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 0;
+  cursor: pointer;
+  box-shadow: 0 0 10px #11182733;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: feedbackFadeIn 0.3s ease-in, animateSidebarButton 0.3s ease-in;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  user-select: none;        /* Standard */
+  -webkit-user-select: none; /* Safari/Chrome */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Old IE/Edge */
+
 }
 
-.sidebarButton:hover {
-  background-color: #2563eb;
+.sidebarButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px oklch(75% 0.183 55.934);
 }
+
+/* Hover: move slightly left, keep anchored */
+.sidebarButton:hover {
+  transform: translateX(-5px); /* small movement left */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background-color: oklch(64.6% .222 41.116);
+}
+
+/* Shimmer/glimmer effect */
+.sidebarButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #fff0;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.sidebarButton:hover::before {
+  background-color: #fff3;
+  border-color: #ffffff59;
+}
+
+/* Optional SVG inside the button */
+.sidebarButton svg {
+  width: 16px;
+  height: 16px;
+  transform: rotate(90deg);
+}
+
+/* Fade-in keyframe */
+@keyframes feedbackFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Slide-in from right keyframe */
+@keyframes animateSidebarButton {
+  0% { margin-right: -90px; }
+  100% { margin-right: 0; }
+}
+
+
 
 .sidebarContainer {
     width: 100%;

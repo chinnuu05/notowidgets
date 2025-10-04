@@ -36,7 +36,7 @@ export function WidgetWrapper( { children } : { children: React.ReactNode }) {
             
             
 
-            <div>
+            <div className="fixed bottom-10 right-10 z-50">
                 {children}
             </div>
         </MantineProvider>

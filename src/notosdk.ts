@@ -2,6 +2,11 @@ import { NotofoxConfig } from "./lib/model";
 // import React from "react";
 // import ReactDOM from "react-dom";
 
+
+
+
+
+
 (function (window: any, document: any) {
   class Notofox {
     

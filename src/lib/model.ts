@@ -2,6 +2,7 @@
 
 export interface NotofoxConfig {
     project: string;
+    projectId: string;
     defaultTheme: "light" | "dark";
     locale: string;
     containerId?: string;
@@ -17,7 +18,7 @@ export interface TriggerConfig {
         Custom type is a "feedback-widget" attribute the user can place on any element in his app
         to trigger the feedback widgets to show up
     */
-    type: "floating" | "feedback-btn" | "sidebar" | "custom";
+    type: "floating" | "sidebar" | "custom";
 
 }
 

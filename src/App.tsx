@@ -1,7 +1,7 @@
 import { MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
 import { FloatingFeedbackWidget } from "./components/triggers/FloatingFeedbackWidget";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import "./input.css";
 import "@mantine/core/styles.css";
@@ -10,6 +10,8 @@ import { StickySidebarWidget } from "./components/triggers/StickySidebarWidget";
 import { ChangelogPopupWidget } from "./components/triggers/ChangelogPopupWidget";
 import { HelpCenterTrigger } from "./components/triggers/HelpCenterTrigger";
 import { GiveFeedbackButton } from "./components/triggers/GiveFeedbackHeartButton";
+import { FeedbackWidgetTrigger } from "./components/triggers/FeedbackWidgetTrigger";
+import { FeedbackWidget } from "./components/FeedbackWidget";
 
 export default function App() {
   // useEffect(() => {
@@ -54,20 +56,50 @@ export default function App() {
     )
   }
 
+  const [popoverOpened, setPopoverOpened] = useState(false);
+
 
   return (
 
-    <AppLayout>
-        <div className="bg-white h-screen">
+    // <div>
 
-          <div className="mx-auto w-full flex items-center text-center justify-items-center">
-            <div className="text-3xl text-black">App.tsx Home Page</div>
-          </div>
+    //   <div
+    //     id="notofox-widget-container"
+    //     dangerouslySetInnerHTML={{
+    //       __html: `
+    //         <script src="http://localhost:8000/static/embed/notosdk.js"></script>
+    //         <script>
+    //           window.Notofox("initialize_widget", {
+    //             project: "Notofox",
+    //             defaultTheme: "light",
+    //             locale: "en",
+    //             widgetType: "feedback",
+    //             triggerConfig: {
+    //               type: "floating"
+    //             },
+    //             containerId: "notofox-widget"
+    //           });
+    //         </script>
+    //       `,
+    //     }}
+    //   />
+
+    // </div>
+
+    
+
+    <AppLayout>
+        <div className="bg-white">
+
+          {/* <div className="mx-auto w-full flex items-center text-center justify-items-center">
+            <div className="text-3xl text-black">Embedded Widgets</div>
+          </div> */}
 
           {/* <iframe src="https://notion.pluggr.io/ebd/1773452ec7278044ae5fc99f97ac86ff" width="100%" height="600" /> */}
 
+          <FloatingFeedbackWidget projectId="0dfd7907-5588-44b1-a114-006173132221"></FloatingFeedbackWidget>
 
-          <HelpCenterTrigger/>
+          {/* <HelpCenterTrigger/> */}
 
           {/* <ChangelogPopupWidget></ChangelogPopupWidget> */}
 

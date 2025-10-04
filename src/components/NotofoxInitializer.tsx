@@ -33,7 +33,8 @@ export default function NotofoxInitializer({ config }: Props) {
 //     return () => {
 //       document.body.removeChild(script);
 //     };
-//   }, [config]);
+//   }, [config]);  
 
-  return <div className="p-12" id="notofox-widget"></div>; // This is where the widget will render
+  return <div></div>
+  // return <div className="p-12 fixed bottom-20 right-20 z-50" id="notofox-widget"></div>; // This is where the widget will render
 }

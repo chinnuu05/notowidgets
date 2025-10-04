@@ -23,12 +23,14 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <App/>
     }
      */}
-      <>
-        <div className="p-8">
-          <h1>This page is embedded with a Notofox Feedback Widget</h1>
-        </div>
-        <NotofoxInitializer config={notofoxConfig} /> 
-      </>
+
+     <App/>
+    {/* <>
+      <div className="p-8">
+        <h1>Example embedded widget</h1>
+      </div>
+      <NotofoxInitializer config={notofoxConfig} /> 
+    </> */}
 
   </React.StrictMode>
 );
