@@ -16,33 +16,60 @@ export const FloatingFeedbackWidget = ( { projectId } : { projectId: string }) =
         setOpen(!open);
     }
 
-  const [iframeHeight, setIframeHeight] = useState(300);
 
+    const [iframeWidth, setIframeWidth] = useState(325);
+    const [iframeHeight, setIframeHeight] = useState(339);
 
+    // This is a list of the sizes the iFrame window should manually be set to during each <Stepper> step of the widget submission process
     const widgetWindowSizes = [
         {
-            width: 400,
-            height: 500,
+            step: 1,
+            width: 325,
+            height: 339,
         },
         {
-            width: 350,
-            height: 375,
+            step: 2,
+            width: 365,
+            height: 358,
+        }, 
+        {
+            step: 3,
+            width: 379,
+            height: 248, 
         }
     ]
 
   /**
-   * Dynamically send window events to the child frame to update the window height/width
-   * Based on the current step of the stepper
+   * This window event tells us when the stepper has changed and what step the user is currently on
+   * Then according to that, we dynamically set the width and height of the iframe using the values in widgetWindowSizes
    */
-  useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      if (event.data.widgetHeight) {
-        setIframeHeight(event.data.widgetHeight);
-      }
-    };
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, []);
+
+
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+
+            console.log("We received the stepper step changed postMEssage event from the embedded iFrame window");
+            if (event.data.widgetStep) {
+                const currentStep = event.data.widgetStep;
+                const size = widgetWindowSizes.find(w => w.step === currentStep);
+                if (size) {
+                    setIframeHeight(size.height);
+                    // Optional: Also set width if needed
+                    // setIframeWidth(size.width);
+                }
+            }
+
+            // fallback if you're still sending height manually
+            if (event.data.widgetHeight) {
+                setIframeHeight(event.data.widgetHeight);
+            }
+        };
+
+        window.addEventListener("message", handleMessage);
+        return () => window.removeEventListener("message", handleMessage);
+    }, []);
+
+
 
 
 
@@ -71,9 +98,10 @@ export const FloatingFeedbackWidget = ( { projectId } : { projectId: string }) =
                 <iframe
                     src={`http://localhost:8000/app/feedback-widget/${projectId}`}
                     style={{
-                    // width: "400px",
-                    // height: `${iframeHeight}px`,
-                    minHeight: iframeHeight ? `${iframeHeight}px` : `275px`,
+                    width: `${iframeWidth}px`,
+                    height: `${iframeHeight}px`,
+                    minHeight: `${iframeHeight}px`,
+                    minWidth: `${iframeWidth}px`,
                     border: "0",
                     borderRadius: "8px",
                     background: "transparent",
