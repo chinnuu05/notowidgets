@@ -12,6 +12,22 @@ export interface NotofoxConfig {
 
 }
 
+export interface NotofoxChangelogConfig {
+    project: string;
+    projectId: string;
+    defaultTheme: "light" | "dark";
+    locale: string;
+    containerId?: string;
+
+    // This username is provided by the customer, so we can greet the user by name in the changelog popup
+    username: string;
+
+
+}
+
+
+
+
 /* Which trigger ui to show the Feedback Widget with */
 export interface TriggerConfig {
     /* 

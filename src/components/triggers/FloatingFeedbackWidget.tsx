@@ -3,6 +3,7 @@ import {
     IconBulbFilled,
 } from "@tabler/icons-react"
 
+// import classes from "@src/styles/FloatingFeedbackWidget.module.css";
 import classes from "../../styles/FloatingFeedbackWidget.module.css";
 
 /* Takes in icon color, bg color, and icon svg */
@@ -81,45 +82,58 @@ export const FloatingFeedbackWidget = ( { projectId } : { projectId: string }) =
             {open && (
                 <div
                     id="noto-widget-iframe-embed"
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100vw",
-                        height: "100vh",
-                        backgroundColor: "rgba(0,0,0,0.3)",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        zIndex: 9999,
-                    }}
+                    className={classes.widgetOverlay}
+
+                    // style={{
+                    //     position: "fixed",
+                    //     top: 0,
+                    //     left: 0,
+                    //     width: "100vw",
+                    //     height: "100vh",
+                    //     backgroundColor: "rgba(0,0,0,0.3)",
+                    //     display: "flex",
+                    //     justifyContent: "center",
+                    //     alignItems: "center",
+                    //     zIndex: 9999,
+                    // }}
                     onClick={toggleWidget}
                 >
-                <iframe
-                    src={`http://localhost:8000/app/feedback-widget/${projectId}`}
-                    style={{
-                    width: `${iframeWidth}px`,
-                    height: `${iframeHeight}px`,
-                    minHeight: `${iframeHeight}px`,
-                    minWidth: `${iframeWidth}px`,
-                    border: "0",
-                    borderRadius: "8px",
-                    background: "transparent",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                    // transition: "height 0.95s, min-height 0.95s, opacity 0.2s",
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                />
+                    <iframe
+                        src={`http://localhost:8000/app/feedback-widget/${projectId}`}
+                        className={classes.widgetIframe}
+                        style={{
+                            width: `${iframeWidth}px`,
+                            height: `${iframeHeight}px`,
+                            minHeight: `${iframeHeight}px`,
+                            minWidth: `${iframeWidth}px`,
+                            border: "0",
+                            borderRadius: "8px",
+                            background: "transparent",
+                            boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                            // transition: "height 0.95s, min-height 0.95s, opacity 0.2s",
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                    />
                 </div>
             )}
 
             <div
                 id="noto-floating-icon"
                 onClick={toggleWidget}
-                className={`${classes.floatingIcon} hover:cursor-pointer w-fit p-3 flex items-center justify-center rounded-full shadow-lg hover:shadow-xl transition-all duration-200`}>
-                
-                <div className="flex">
-                    <IconBulbFilled size={30} className="text-white"></IconBulbFilled>
+                // className={`${classes.floatingIcon} hover:cursor-pointer w-fit p-3 flex items-center justify-center rounded-full shadow-lg hover:shadow-xl transition-all duration-200`}    
+                className={classes.floatingIcon}
+            >
+
+                <div 
+                    // className="flex"
+                    className={classes.iconInner}
+
+                >
+                    <IconBulbFilled 
+                        size={30} 
+                        className={classes.icon}
+                        // className="text-white"
+                    ></IconBulbFilled>
                 </div>
 
             </div>

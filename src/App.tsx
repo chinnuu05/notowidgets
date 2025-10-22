@@ -7,7 +7,7 @@ import "./input.css";
 import "@mantine/core/styles.css";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { StickySidebarWidget } from "./components/triggers/StickySidebarWidget";
-import { ChangelogPopupWidget } from "./components/triggers/ChangelogPopupWidget";
+import { NotofoxChangelogWidget } from "./components/triggers/ChangelogWidgetTrigger";
 import { HelpCenterTrigger } from "./components/triggers/HelpCenterTrigger";
 import { GiveFeedbackButton } from "./components/triggers/GiveFeedbackHeartButton";
 import { FeedbackWidgetTrigger } from "./components/triggers/FeedbackWidgetTrigger";
